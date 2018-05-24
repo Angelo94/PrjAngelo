@@ -3,10 +3,105 @@
 <head>
   <title></title>
 </head>
+<style>
+#booking {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#booking td, #booking th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#booking tr:nth-child(even){background-color: #f2f2f2;}
+
+#booking tr:hover {background-color: #ddd;}
+
+#booking th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
 <body>
 <h1>HOME</h1>
 
 {% csrf_token %}
+{%if newuser == False%}
+	Welcome back {{name}}
+{%else%}
+	Hi {{name}} you are a new user now
+{% endif %}
+
+<br> 
+<br> 
+<br> 
+<br> 
+
+<table id="booking">
+<tr>
+	<th>BookingID</th>
+	<th>UserID</th>
+	<th>Model</th>
+	<th>StartDate</th>
+	<th>EndDate</th>
+	<th>Place</th>
+</tr>
+
+
+{% for bokedItem in booking%}
+<tr>
+<td>{{bokedItem.bookingID}}</td>                     
+<td>{{bokedItem.userID}}</td> 
+<td>{{bokedItem.model}}</td> 
+<td>{{bokedItem.startDate}}</td> 
+<td>{{bokedItem.endDate}}</td> 
+<td>{{bokedItem.place}}</td> 
+</tr>
+
+{% endfor %}
+
+</table>
+<br> 
+<br> 
+<br> 
+<br> 
+
+
+<table id="booking">
+<tr>
+	<th>VehiclesID</th>
+	<th>Code</th>
+	<th>Model</th>
+
+</tr>
+
+
+{% for car in vehiclesList%}
+<tr>
+<td>{{car.vehiclesID}}</td>                     
+<td>{{car.code}}</td> 
+<td>{{car.model}}</td> 
+
+</tr>
+
+{% endfor %}
+
+</table>
+<br> 
+<br> 
+<br> 
+<br> 
+
+<div>All the users </div>
+{% for usr in allUser %}
+	<div>{{usr}}</div>
+{% endfor %}
+
 
 </body>
 </html>

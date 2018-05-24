@@ -5,11 +5,13 @@
 </head>
 <body>
 <h1>Simple Web App</h1>
-<form action="login/" method="post">
+<form action="/" method="post">
 {% csrf_token %}
-  	<div>Insert your name:<input name="name" id="name" type="text"></div>      
-  	<div>Insert your password:<input name="password" id="password" type="text"></div>      
-	<button>login</button>
+  	<div>Insert your email:<input name="email" id="email" type="email" required></div>      
+  	<div>Insert your name:<input name="name" id="name" type="text" required></div>      
+  	<div>Insert your password:<input name="password" id="password" type="password" required></div>      
+	<input type="submit" name="Login" value="Login">
+	{{msg}}
 </form>
 </body>
 </html>
